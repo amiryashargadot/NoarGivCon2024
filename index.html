@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עמוד נחיתה</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+        #animation {
+            width: 100%;
+            height: 50vh;
+            background: url('animation.gif') no-repeat center center;
+            background-size: cover;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            display: block;
+            width: 80%;
+            padding: 10px;
+            margin: 10px auto;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="animation"></div>
+    <div class="buttons">
+        <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'">להירשם עכשיו</button>
+        <button onclick="startSnakeGame()">סנייק ואז להירשם</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('animation').style.display = 'none';
+                document.querySelector('.buttons').style.display = 'block';
+            }, 1500);
+        });
+
+        function startSnakeGame() {
+            window.location.href = 'snake.html';
+        }
+    </script>
+</body>
+</html>
