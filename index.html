@@ -5,60 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>עמוד נחיתה</title>
     <style>
-        body, html {
+        /* קובע את צבע הרקע של הדף */
+        body {
+            background-color: #F4CFCB; /* צבע רקע בהיר */
+            color: #E6E7E8; /* צבע טקסט */
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            background-color: #f0f0f0;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-        #animation {
-            width: 100%;
-            height: 50vh;
-            background: url('animation.gif') no-repeat center center;
-            background-size: cover;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            display: block;
-            width: 80%;
-            padding: 10px;
-            margin: 10px auto;
-            font-size: 1.2em;
-            background-color: #007BFF;
-            color: white;
+        
+        /* עיצוב כפתורים */
+        .button {
+            background-color: #006A71; /* צבע רקע של כפתור */
+            color: #E6E7E8; /* צבע טקסט של כפתור */
             border: none;
             border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
+            margin: 10px;
         }
-        button:hover {
-            background-color: #0056b3;
+        
+        .button:hover {
+            background-color: #0056b3; /* צבע רקע כשמעבירים את העכבר מעל כפתור */
+        }
+        
+        /* עיצוב הכפתור השני אם דרוש */
+        .button-alt {
+            background-color: #28a745; /* צבע רקע של כפתור אלטרנטיבי */
+            color: white; /* צבע טקסט של כפתור אלטרנטיבי */
+        }
+        
+        .button-alt:hover {
+            background-color: #218838; /* צבע רקע כשמעבירים את העכבר מעל כפתור אלטרנטיבי */
         }
     </style>
 </head>
 <body>
-    <div id="animation"></div>
-    <div class="buttons">
-        <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'">להירשם עכשיו</button>
-        <button onclick="startSnakeGame()">סנייק ואז להירשם</button>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('animation').style.display = 'none';
-                document.querySelector('.buttons').style.display = 'block';
-            }, 1500);
-        });
-
-        function startSnakeGame() {
-            window.location.href = 'snake.html';
-        }
-    </script>
+    <button class="button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'">להירשם עכשיו</button>
+    <button class="button button-alt" onclick="window.location.href='YOUR_SNAKE_GAME_URL'">סנייק ואז להירשם</button>
 </body>
 </html>
