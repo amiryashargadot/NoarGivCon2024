@@ -69,10 +69,13 @@
     </style>
 </head>
 <body>
+    <!-- Video Element -->
     <video id="introVideo" autoplay muted>
-        <source src="<iframe src="https://drive.google.com/file/d/14oX-2G9qwCL4SN2n1zOe4xXVWGWFYJh_/preview" width="640" height="480" allow="autoplay"></iframe>" type="video/mp4">
+        <source src="https://drive.google.com/file/d/14oX-2G9qwCL4SN2n1zOe4xXVWGWFYJh_/view?usp=sharing" type="video/mp4">
         דפדפן זה אינו תומך בניגון סרטונים.
     </video>
+    
+    <!-- Content Section -->
     <div id="content">
         <canvas id="gameCanvas" width="300" height="300"></canvas>
         <div id="message">נפסלת, עכשיו להירשם</div>
@@ -88,14 +91,18 @@
             <button disabled></button>
         </div>
     </div>
+    
+    <!-- JavaScript -->
     <script>
+        // Get elements
         const introVideo = document.getElementById('introVideo');
         const content = document.getElementById('content');
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const message = document.getElementById('message');
         const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'; // Replace with your Google Form URL
-
+        
+        // Hide video and show content after video ends
         introVideo.onended = () => {
             introVideo.style.display = 'none';
             content.style.display = 'flex';
