@@ -62,8 +62,8 @@
         snake[0] = { x: 9 * box, y: 10 * box };
 
         let food = {
-            x: Math.floor(Math.random() * 15 + 1) * box,
-            y: Math.floor(Math.random() * 15 + 3) * box
+            x: Math.floor(Math.random() * (canvas.width / box)) * box,
+            y: Math.floor(Math.random() * (canvas.height / box)) * box
         };
 
         let d;
@@ -117,8 +117,8 @@
 
             if (snakeX == food.x && snakeY == food.y) {
                 food = {
-                    x: Math.floor(Math.random() * 15 + 1) * box,
-                    y: Math.floor(Math.random() * 15 + 3) * box
+                    x: Math.floor(Math.random() * (canvas.width / box)) * box,
+                    y: Math.floor(Math.random() * (canvas.height / box)) * box
                 };
             } else {
                 snake.pop();
@@ -130,7 +130,7 @@
             };
 
             if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
-                window.location.href = 'YOUR_GOOGLE_FORM_URL';
+                window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link';
             }
 
             snake.unshift(newHead);
