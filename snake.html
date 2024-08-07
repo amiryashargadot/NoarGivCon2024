@@ -38,10 +38,23 @@
             background-color: transparent;
             border: none;
         }
+        #message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <div id="message">נפסלת, עכשיו להירשם</div>
     <div class="controls">
         <button disabled></button>
         <button onclick="changeDirection('UP')">⬆️</button>
@@ -56,6 +69,8 @@
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
+        const message = document.getElementById('message');
+        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'; // Replace with your Google Form URL
 
         const box = 20;
         let snake = [];
@@ -130,7 +145,12 @@
             };
 
             if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
-                window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link';
+                clearInterval(game);
+                message.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = formURL;
+                }, 2000);
+                return;
             }
 
             snake.unshift(newHead);
