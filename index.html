@@ -17,6 +17,27 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            overflow: hidden; /* מונע גלילה */
+        }
+        
+        /* עיצוב טקסט */
+        .header-text {
+            font-size: 36px;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 2s forwards; /* הנפשה של הטקסט */
+        }
+
+        /* אנימציה של הנפשה */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* עיצוב כפתורים */
@@ -29,10 +50,20 @@
             font-size: 16px;
             cursor: pointer;
             margin: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: buttonFadeIn 2s forwards 1s; /* הנפשה של הכפתורים */
         }
-        
-        .button:hover {
-            background-color: #0056b3; /* צבע רקע כשמעבירים את העכבר מעל כפתור */
+
+        @keyframes buttonFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* עיצוב הכפתור השני אם דרוש */
@@ -44,9 +75,14 @@
         .button-alt:hover {
             background-color: #218838; /* צבע רקע כשמעבירים את העכבר מעל כפתור אלטרנטיבי */
         }
+        
+        .button:hover {
+            background-color: #0056b3; /* צבע רקע כשמעבירים את העכבר מעל כפתור */
+        }
     </style>
 </head>
 <body>
+    <div class="header-text">נוער גבעתיים</div>
     <button class="button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'">להירשם עכשיו</button>
     <button class="button button-alt" onclick="window.location.href='snake.html'">סנייק ואז להירשם</button>
 </body>
