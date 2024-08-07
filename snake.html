@@ -144,7 +144,16 @@
                 y: snakeY
             };
 
-            if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
+            if (collision(newHead, snake)) {
+                clearInterval(game);
+                message.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = formURL;
+                }, 2000);
+                return;
+            }
+
+            if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height) {
                 clearInterval(game);
                 message.style.display = 'block';
                 setTimeout(() => {
@@ -156,7 +165,7 @@
             snake.unshift(newHead);
         }
 
-        let game = setInterval(draw, 100);
+        let game = setInterval(draw, 200); // Slow down the snake by increasing the interval time
     </script>
 </body>
 </html>
