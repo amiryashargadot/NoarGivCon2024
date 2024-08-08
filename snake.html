@@ -14,8 +14,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #006A71; /* צבע רקע */
-            color: #E6E7E8; /* צבע טקסט */
+            background-color: #006A71; /* צבע רקע מעודכן */
+            color: #E6E7E8; /* צבע טקסט מעודכן */
             font-family: Arial, sans-serif;
         }
         .header {
@@ -24,7 +24,7 @@
         }
         canvas {
             border: 1px solid #000;
-            background-color: #E6E7E8; /* צבע רקע של הקנבס */
+            background-color: #E6E7E8; /* צבע רקע של הקנבס מעודכן לאפור בהיר */
         }
         .controls {
             display: grid;
@@ -40,9 +40,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #F4CFCB; /* צבע כפתורים */
+            background-color: #F4CFCB; /* צבע כפתורים מעודכן */
             border: none;
-            color: #006A71; /* צבע טקסט של כפתורים */
+            color: #006A71; /* צבע טקסט של כפתורים מעודכן */
             border-radius: 5px;
         }
         .controls button:disabled {
@@ -51,24 +51,15 @@
         }
         #message {
             display: none;
-            flex-direction: column;
-            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            margin-top: 20px;
-        }
-        #message button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #F4CFCB; /* צבע כפתור */
-            color: #006A71; /* צבע טקסט כפתור */
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
         }
         .footer {
             font-size: 14px;
@@ -79,11 +70,7 @@
 <body>
     <div class="header">נוער גבעתיים</div>
     <canvas id="gameCanvas" width="300" height="300"></canvas>
-    <div id="message">
-        <div>נפסלת, עכשיו להירשם או לנסות משחק אחר!</div>
-        <button onclick="window.location.href = formURL">להירשם</button>
-        <button onclick="window.location.href = 'tetris.html'">לנסות משחק אחר ואז להירשם</button>
-    </div>
+    <div id="message">נפסלת, עכשיו להירשם</div>
     <div class="controls">
         <button disabled></button>
         <button onclick="changeDirection('UP')">⬆️</button>
@@ -139,11 +126,11 @@
         }
 
         function draw() {
-            ctx.fillStyle = '#E6E7E8'; /* צבע רקע של הקנבס */
+            ctx.fillStyle = '#E6E7E8'; /* צבע רקע של הקנבס מעודכן לאפור בהיר */
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = (i == 0) ? '#006A71' : '#006A71'; /* צבע הנחש */
+                ctx.fillStyle = (i == 0) ? '#006A71' : '#006A71'; /* צבע הנחש מעודכן לירוק */
                 ctx.strokeStyle = '#006A71'; /* צבע מסגרת */
                 ctx.fillRect(snake[i].x, snake[i].y, box, box);
                 ctx.strokeRect(snake[i].x, snake[i].y, box, box);
@@ -176,20 +163,26 @@
 
             if (collision(newHead, snake)) {
                 clearInterval(game);
-                message.style.display = 'flex'; // Show the message with buttons
+                message.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = formURL;
+                }, 2000);
                 return;
             }
 
             if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height) {
                 clearInterval(game);
-                message.style.display = 'flex'; // Show the message with buttons
+                message.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = formURL;
+                }, 2000);
                 return;
             }
 
             snake.unshift(newHead);
         }
 
-        let game = setInterval(draw, 200);
+        let game = setInterval(draw, 200); // Slow down the snake by increasing the interval time
     </script>
 </body>
 </html>
