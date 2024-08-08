@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק טטריס</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #006A71; /* צבע רקע */
+            color: #E6E7E8; /* צבע טקסט */
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            border: 1px solid #000;
+            background-color: #E6E7E8; /* צבע רקע של הקנבס */
+        }
+        #message {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #message button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #F4CFCB; /* צבע כפתור */
+            color: #006A71; /* צבע טקסט כפתור */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">משחק טטריס</div>
+    <canvas id="tetrisCanvas" width="240" height="400"></canvas>
+    <div id="message">
+        <div>נפסלת!</div>
+        <button onclick="window.location.href = formURL">להירשם</button>
+    </div>
+    <script>
+        const canvas = document.getElementById('tetrisCanvas');
+        const ctx = canvas.getContext('2d');
+        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'; // Replace with your Google Form URL
+        const message = document.getElementById('message');
+
+        // Implement Tetris game logic here
+
+        // Example of losing condition
+        function gameOver() {
+            clearInterval(game);
+            message.style.display = 'flex'; // Show the message with the button
+        }
+
+        // Start game
+        let game = setInterval(draw, 200);
+
+        function draw() {
+            // Game drawing logic
+        }
+    </script>
+</body>
+</html>
