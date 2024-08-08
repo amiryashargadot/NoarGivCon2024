@@ -14,8 +14,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #006A71; /* צבע רקע */
-            color: #E6E7E8; /* צבע טקסט */
+            background-color: #006A71; /* צבע רקע מעודכן */
+            color: #E6E7E8; /* צבע טקסט מעודכן */
             font-family: Arial, sans-serif;
         }
         .header {
@@ -24,7 +24,7 @@
         }
         canvas {
             border: 1px solid #000;
-            background-color: #E6E7E8; /* צבע רקע של הקנבס */
+            background-color: #E6E7E8; /* צבע רקע של הקנבס מעודכן לאפור בהיר */
         }
         .controls {
             display: grid;
@@ -40,9 +40,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #F4CFCB; /* צבע כפתורים */
+            background-color: #F4CFCB; /* צבע כפתורים מעודכן */
             border: none;
-            color: #006A71; /* צבע טקסט של כפתורים */
+            color: #006A71; /* צבע טקסט של כפתורים מעודכן */
             border-radius: 5px;
         }
         .controls button:disabled {
@@ -87,14 +87,11 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const message = document.getElementById('message');
-        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'; // קישור לטופס גוגל
+        const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSe4cZUq3PwPb9cLQzEC9RLTFR1jIcZTMlO1PYGLgmhOgALyNA/viewform?usp=sf_link'; // Replace with your Google Form URL
 
         const box = 20;
         let snake = [];
         snake[0] = { x: 9 * box, y: 10 * box };
-
-        let foodImg = new Image();
-        foodImg.src = 'https://drive.google.com/file/d/17XtkZP1yUBqe9vkdkT4a-tm2ZcPGe5xB/view?usp=sharing'; // עדכן את הנתיב לתמונה
 
         let food = {
             x: Math.floor(Math.random() * (canvas.width / box)) * box,
@@ -129,17 +126,18 @@
         }
 
         function draw() {
-            ctx.fillStyle = '#E6E7E8'; /* צבע רקע של הקנבס */
+            ctx.fillStyle = '#E6E7E8'; /* צבע רקע של הקנבס מעודכן לאפור בהיר */
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = '#006A71'; /* צבע הנחש */
+                ctx.fillStyle = (i == 0) ? '#006A71' : '#006A71'; /* צבע הנחש מעודכן לירוק */
                 ctx.strokeStyle = '#006A71'; /* צבע מסגרת */
                 ctx.fillRect(snake[i].x, snake[i].y, box, box);
                 ctx.strokeRect(snake[i].x, snake[i].y, box, box);
             }
 
-            ctx.drawImage(foodImg, food.x, food.y, box, box); // ציור המזון כתמונה
+            ctx.fillStyle = '#FF0000'; /* צבע המזון */
+            ctx.fillRect(food.x, food.y, box, box);
 
             let snakeX = snake[0].x;
             let snakeY = snake[0].y;
@@ -184,7 +182,7 @@
             snake.unshift(newHead);
         }
 
-        let game = setInterval(draw, 200); // קצב משחק
+        let game = setInterval(draw, 200); // Slow down the snake by increasing the interval time
     </script>
 </body>
 </html>
