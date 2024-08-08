@@ -15,9 +15,16 @@
             justify-content: center;
             align-items: center;
             background-color: #006A71; /* צבע רקע מעודכן */
+            color: #E6E7E8; /* צבע טקסט מעודכן */
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            font-size: 36px;
+            margin-bottom: 20px;
         }
         canvas {
             border: 1px solid #000;
+            background-color: #E6E7E8; /* צבע רקע של הקנבס מעודכן לאפור בהיר */
         }
         .controls {
             display: grid;
@@ -54,9 +61,14 @@
             border-radius: 10px;
             text-align: center;
         }
+        .footer {
+            font-size: 14px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <div class="header">נוער גבעתיים</div>
     <canvas id="gameCanvas" width="300" height="300"></canvas>
     <div id="message">נפסלת, עכשיו להירשם</div>
     <div class="controls">
@@ -70,6 +82,7 @@
         <button onclick="changeDirection('DOWN')">⬇️</button>
         <button disabled></button>
     </div>
+    <div class="footer">שחקו ואל תשכחו להירשם לקבוצת מעורבות!</div>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -113,11 +126,11 @@
         }
 
         function draw() {
-            ctx.fillStyle = '#006A71'; /* צבע רקע של הקנבס מעודכן */
+            ctx.fillStyle = '#E6E7E8'; /* צבע רקע של הקנבס מעודכן לאפור בהיר */
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = (i == 0) ? '#FFFFFF' : '#F4CFCB'; /* צבע גוף הנחש */
+                ctx.fillStyle = (i == 0) ? '#006A71' : '#006A71'; /* צבע הנחש מעודכן לירוק */
                 ctx.strokeStyle = '#006A71'; /* צבע מסגרת */
                 ctx.fillRect(snake[i].x, snake[i].y, box, box);
                 ctx.strokeRect(snake[i].x, snake[i].y, box, box);
