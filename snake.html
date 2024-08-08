@@ -14,7 +14,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            background-color: #006A71; /* צבע רקע מעודכן */
         }
         canvas {
             border: 1px solid #000;
@@ -33,6 +33,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #F4CFCB; /* צבע כפתורים מעודכן */
+            border: none;
+            color: #006A71; /* צבע טקסט של כפתורים מעודכן */
+            border-radius: 5px;
         }
         .controls button:disabled {
             background-color: transparent;
@@ -109,17 +113,17 @@
         }
 
         function draw() {
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = '#006A71'; /* צבע רקע של הקנבס מעודכן */
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = (i == 0) ? 'green' : 'white';
-                ctx.strokeStyle = 'red';
+                ctx.fillStyle = (i == 0) ? '#FFFFFF' : '#F4CFCB'; /* צבע גוף הנחש */
+                ctx.strokeStyle = '#006A71'; /* צבע מסגרת */
                 ctx.fillRect(snake[i].x, snake[i].y, box, box);
                 ctx.strokeRect(snake[i].x, snake[i].y, box, box);
             }
 
-            ctx.fillStyle = 'red';
+            ctx.fillStyle = '#FF0000'; /* צבע המזון */
             ctx.fillRect(food.x, food.y, box, box);
 
             let snakeX = snake[0].x;
